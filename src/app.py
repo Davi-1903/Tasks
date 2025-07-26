@@ -30,6 +30,11 @@ def load_user(user_id: str) -> User:
     return User.get(user_id)
 
 
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('errors/404.html'), 404
+
+
 # ================================================ ROTAS ================================================
 @app.route('/')
 def index():
