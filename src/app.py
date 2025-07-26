@@ -33,7 +33,9 @@ def load_user(user_id: str) -> User:
 # ================================================ ROTAS ================================================
 @app.route('/')
 def index():
-    return render_template('index.html')
+    if current_user.is_authenticated:
+        return render_template('index.html', tasks=current_user.tasks)
+    return render_template('index.html', tasks=None)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -76,8 +78,63 @@ def register():
     return render_template('register.html')
 
 
+@app.route('/tasks')
+@login_required
+def tasks():
+    length = len(list(filter(lambda item: not item.completed, current_user.tasks)))
+    return render_template('tasks.html', tasks=current_user.tasks, tasks_incomplet_length=length)
+
+
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
     return redirect(url_for('login'))
+
+
+@app.route('/create_task', methods=['GET', 'POST'])
+@login_required
+def create_task():
+    if request.method == 'POST':
+        title = request.form['title']
+        description = request.form['description']
+
+        task = Task(title=title, description=description, user_id=current_user.id)
+        db.session.add(task)
+        db.session.commit()
+
+        return redirect(url_for('tasks'))
+    return render_template('create_task.html')
+
+
+@app.route('/completed_task', methods=['POST'])
+@login_required
+def completed_task():
+    if request.method == 'POST':
+        id = int(request.form['id'])
+        task = Task.query.get(id)
+        task.completed = True
+        db.session.commit()
+    return redirect(url_for('tasks'))
+
+
+@app.route('/deleted_task', methods=['POST'])
+@login_required
+def deleted_task():
+    if request.method == 'POST':
+        id = request.form['id']
+        task = Task.query.get(int(id))
+        db.session.delete(task)
+        db.session.commit()
+    return redirect(url_for('tasks'))
+
+
+@app.route('/reopen_task', methods=['POST'])
+@login_required
+def reopen_task():
+    if request.method == 'POST':
+        id = int(request.form['id'])
+        task = Task.query.get(id)
+        task.completed = False
+        db.session.commit()
+    return redirect(url_for('tasks'))

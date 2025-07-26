@@ -7,7 +7,22 @@
         <h2>Hello, {{ current_user.name }}</h2>
         <section class="tasks">
             {% if tasks %}
-                <!-- Code -->
+                {% for task in tasks %}
+                    {% if not task.completed %}
+                        <a href="{{ url_for('tasks') }}">
+                            <article class="task task-{{ task.completed }}">
+                                <div class="header">
+                                    <h3>{{ task.title }}</h3>
+                                </div>
+                                {% if task.description %}
+                                <div class="description">
+                                    <p>{{ task.description }}</p>
+                                </div>
+                                {% endif %}
+                            </article>
+                        </a>
+                    {% endif %}
+                {% endfor %}
             {% else %}
                 <h3>There are no tasks</h3>
             {% endif %}
