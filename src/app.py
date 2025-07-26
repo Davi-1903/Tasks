@@ -145,6 +145,8 @@ def reopen_task():
 def delete_account(user_id):
     if request.method == 'POST':
         user = User.query.get(user_id)
+        for task in user.tasks:
+            db.session.delete(task)
         logout_user()
         db.session.delete(user)
         db.session.commit()
