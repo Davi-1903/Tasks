@@ -15,3 +15,7 @@ Projeto simples com `Flask`.
 - **RF06:** O usuário poderá editar taferas
 - **RF07:** O usuário poderá marcar tarefas como realizadas
 - **RF08:** O usuário poderá apgar terefas
+
+## 3. Banco de dados
+
+- **RNF01:** Usar banco de dados `SQLite`.
