@@ -14,7 +14,6 @@ Projeto simples com `Flask`.
 - **RF05:** O usuário poderá criar novas tarefas
 - **RF06:** O usuário poderá editar taferas
 - **RF07:** O usuário poderá marcar tarefas como realizadas
-- **RF08:** O usuário poderá apagar terefas
 
 ## 3. Banco de dados
 
