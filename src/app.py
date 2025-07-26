@@ -138,3 +138,14 @@ def reopen_task():
         task.completed = False
         db.session.commit()
     return redirect(url_for('tasks'))
+
+
+@app.route('/delete_account/<int:user_id>', methods=['POST'])
+@login_required
+def delete_account(user_id):
+    if request.method == 'POST':
+        user = User.query.get(user_id)
+        logout_user()
+        db.session.delete(user)
+        db.session.commit()
+    return redirect(url_for('index'))
