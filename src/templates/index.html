@@ -3,6 +3,17 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h2>Welcome to the Tasks App</h2>
-    <p>This is your one-stop solution for managing tasks efficiently.</p>
+    {% if current_user.is_authenticated %}
+        <h2>Hello, {{ current_user.name }}</h2>
+        <section class="tasks">
+            {% if tasks %}
+                <!-- Code -->
+            {% else %}
+                <h3>There are no tasks</h3>
+            {% endif %}
+        </section>
+    {% else %}
+        <h2>Welcome to the Tasks App</h2>
+        <p>This is your one-stop solution for managing tasks efficiently.</p>
+    {% endif %}
 {% endblock %}
