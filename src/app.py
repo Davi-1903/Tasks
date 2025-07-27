@@ -65,7 +65,6 @@ def login():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        print(request.form)
         name = request.form['name']
         email = request.form['email']
         password = request.form['password']
@@ -104,7 +103,7 @@ def create_task():
         title = request.form['title']
         description = request.form['description']
 
-        task = Task(title=title, description=description, user_id=current_user.id)
+        task = Task(title=title, description=description, user=current_user)
         db.session.add(task)
         db.session.commit()
 
@@ -117,7 +116,7 @@ def create_task():
 def completed_task():
     if request.method == 'POST':
         id = int(request.form['id'])
-        task = Task.query.get(id)
+        task = db.session.get(Task, id)
         task.completed = True
         db.session.commit()
     return redirect(url_for('tasks'))
@@ -128,7 +127,7 @@ def completed_task():
 def deleted_task():
     if request.method == 'POST':
         id = request.form['id']
-        task = Task.query.get(int(id))
+        task = db.session.get(Task, id)
         db.session.delete(task)
         db.session.commit()
     return redirect(url_for('tasks'))
@@ -139,7 +138,7 @@ def deleted_task():
 def reopen_task():
     if request.method == 'POST':
         id = int(request.form['id'])
-        task = Task.query.get(id)
+        task = db.session.get(Task, id)
         task.completed = False
         db.session.commit()
     return redirect(url_for('tasks'))
@@ -149,7 +148,7 @@ def reopen_task():
 @login_required
 def delete_account(user_id):
     if request.method == 'POST':
-        user = User.query.get(user_id)
+        user = db.session.get(User, user_id)
         for task in user.tasks:
             db.session.delete(task)
         logout_user()

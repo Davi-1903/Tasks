@@ -17,7 +17,7 @@ class User(UserMixin, db.Model):
 
     @classmethod
     def get(cls, user_id: str) -> 'User':
-        return cls.query.get(int(user_id))
+        return db.session.get(cls, int(user_id))
 
 
 class Task(db.Model):
