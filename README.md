@@ -16,23 +16,14 @@ Projetos simples com `Flask`.
     pip install -r requirements.txt
     ```
 
-3. **Especifique o arquivo [`app.py`](src/app.py)**
+3. **Execute a aplicação**
 
     ```sh
     # Linux/MacOS
-    export FLASK_APP=src.app
+    python3 src/app.py
 
-    # Windows (CMD)
-    set FLASK_APP=src.app
-
-    # Windows (PowerShell)
-    $env:FLASK_APP="src.app"
-    ```
-
-4. **Execute a aplicação**
-
-    ```sh
-    flask run
+    # Windows
+    python src/app.py
     ```
 
 ## 📄 Documentos
