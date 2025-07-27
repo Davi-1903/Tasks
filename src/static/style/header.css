@@ -1,0 +1,33 @@
+header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 2rem;
+    height: 100px;
+    box-shadow: .5rem 0 1rem #00800040;
+}
+
+header > h1 {
+    font: bold 2.4rem var(--font);
+    background-image: linear-gradient(to right bottom, var(--color1), var(--color2));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+header > nav .menu {
+    list-style-type: none;
+    display: flex;
+    gap: 2rem;
+}
+
+header > nav .menu a {
+    font: normal 1.2rem var(--font);
+    text-decoration: none;
+    color: var(--color1);
+}
+
+header > nav .menu a:hover {
+    text-decoration: underline;
+}

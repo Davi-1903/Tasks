@@ -1,0 +1,62 @@
+main {
+    height: calc(100vh - 100px);
+    display: grid;
+    place-items: center;
+    background-color: #eeefee;
+}
+
+form {
+    width: 360px;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    box-shadow: .5rem .5rem 1rem #00800040;
+}
+
+form > h2 {
+    font: bold 2.4rem var(--font);
+    color: var(--color1);
+}
+
+form .input-label > label {
+    display: block;
+    font: normal 1.2rem var(--font);
+    color: gray;
+}
+
+form .input-label > input {
+    outline: none;
+    width: 100%;
+    aspect-ratio: 20 / 3;
+    padding-inline: 1rem;
+    border-radius: .5rem;
+    background-color: #eeefee;
+    font: normal 1rem var(--font)
+}
+
+form .input-label > textarea {
+    outline: none;
+    width: 100%;
+    padding: 1rem;
+    border-radius: .5rem;
+    background-color: #eeefee;
+    font: normal 1rem var(--font)
+}
+
+form > button {
+    width: 100%;
+    aspect-ratio: 20 / 3;
+    background-color: var(--color1);
+    border-radius: .5rem;
+    font: normal 1.2rem var(--font);
+    color: white;
+}
+
+form > p {
+    text-align: center;
+    font: normal .8rem var(--font);
+    color: gray;
+}

@@ -1,0 +1,17 @@
+main {
+    height: calc(100vh - 100px);
+    display: grid;
+    place-items: center;
+    background-color: #eeefee;
+}
+
+article > h2 {
+    font: bold 4rem var(--font);
+    color: var(--color1);
+    margin-bottom: 1rem;
+}
+
+article > p {
+    font: normal 1.2rem var(--font);
+    color: black;
+}

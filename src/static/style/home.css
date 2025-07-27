@@ -1,0 +1,99 @@
+main {
+    min-height: calc(100vh - 100px);
+    grid-area: main;
+    background-color: #eefe;
+}
+
+/* ===================================== LOGOUT ===================================== */
+.logout {
+    display: grid;
+    place-items: center;
+}
+
+.logout > article h2 {
+    text-align: center;
+    font: bold 4rem var(--font);
+    color: var(--color1);
+}
+
+.logout > article p {
+    font: normal 1.6rem var(--font);
+    color: var(--color1);
+}
+
+/* ===================================== LOGING ===================================== */
+.login {
+    padding: 2rem;
+    display: grid;
+    grid-template: auto 1fr / 1fr;
+}
+
+.login > h2 {
+    font: bold 2.6rem var(--font);
+    color: var(--color1);
+    padding-bottom: 2rem;
+    border-bottom: 2px solid gray;
+}
+
+/* ===================================== NO TASKS ===================================== */
+.tasks-not-exist {
+    display: grid;
+    place-items: center;
+}
+
+.tasks-not-exist > h3 {
+    font: bold 3rem var(--font);
+    color: gray;
+}
+
+/* ===================================== TASKS ===================================== */
+
+.tasks-exist {
+    padding-block: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.tasks-exist > a {
+    text-decoration: none;
+}
+
+.tasks-exist .task {
+    width: calc(100vw - 4rem);
+    padding: 1rem;
+    background-color: white;
+    border-radius: .5rem;
+    box-shadow: .5rem .5rem 1rem #00800040;
+    overflow-x: hidden;
+}
+
+.tasks-exist .task h3 {
+    font: normal 2rem var(--font);
+    color: var(--color1);
+}
+
+.tasks-exist .task p {
+    font: normal 1rem var(--font);
+    margin-top: 1rem;
+    color: black;
+}
+
+.dangerous-zone {
+    border-top: 2px solid gray;
+    padding-top: 2rem;
+}
+
+.dangerous-zone > h3 {
+    font: bold 3rem var(--font);
+    margin-bottom: 2rem;
+    color: gray;
+}
+
+.dangerous-zone button {
+    padding: .5rem 1rem;
+    font: normal 1.2rem var(--font);
+    color: white;
+    border-radius: .5rem;
+    background-color: red;
+}

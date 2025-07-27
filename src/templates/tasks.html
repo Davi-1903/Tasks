@@ -2,52 +2,62 @@
 
 {% block title %}Tasks{% endblock %}
 
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/tasks.css') }}">
+{% endblock %}
+
 {% block content %}
-<section class="info">
-    <div class="text-content">
-        <h2>Tasks</h2>
-        <span>{{ tasks | length }} tasks</span>
-        <span>{{ tasks_incomplet_length }} tasks incomplet</span>
-    </div>
-    <div class="task-content">
-        <a href="{{ url_for('create_task') }}">
-            <button id="new-task">New task</button>
-        </a>
-    </div>
-</section>
-<section class="tasks">
+<main>
+    <section class="info">
+        <div class="text-content">
+            <h2>Tasks</h2>
+            <p>{{ tasks | length }} tasks</p>
+            <p>{{ tasks_incomplet_length }} tasks incomplet</p>
+        </div>
+        <div class="task-content">
+            <a href="{{ url_for('create_task') }}">
+                <button id="new-task">New task</button>
+            </a>
+        </div>
+    </section>
     {% if tasks %}
-        {% for task in tasks %}
-            <article class="task">
-                <div class="header">
-                    <h3>{{ task.title }}</h3>
-                    <div class="status-{{ task.completed }}">
-                        {% if task.completed %}
-                            <form action="{{ url_for('reopen_task') }}" method="POST">
-                                <button type="submit" id="reopn-button">Reopen</button>
+        <section class="tasks-exist">
+            {% for task in tasks %}
+                <article class="task">
+                    <div class="header">
+                        <div class="title-container">
+                            <h3>{{ task.title }}</h3>
+                        </div>
+                        <div class="operations">
+                            {% if task.completed %}
+                                <form action="{{ url_for('reopen_task') }}" method="POST">
+                                    <button type="submit" id="reopn-button">Reopen</button>
+                                    <input type="number" name="id" value="{{ task.id }}" hidden>
+                                </form>
+                            {% else %}
+                                <form action="{{ url_for('completed_task') }}" method="POST">
+                                    <button type="submit" id="pending-button">Pending</button>
+                                    <input type="number" name="id" value="{{ task.id }}" hidden>
+                                </form>
+                            {% endif %}
+                            <form action="{{ url_for('deleted_task') }}" method="POST">
+                                <button type="submit" id="delete-button">Delete</button>
                                 <input type="number" name="id" value="{{ task.id }}" hidden>
                             </form>
-                        {% else %}
-                            <form action="{{ url_for('completed_task') }}" method="POST">
-                                <button type="submit" id="pending-button">Pending</button>
-                                <input type="number" name="id" value="{{ task.id }}" hidden>
-                            </form>
-                        {% endif %}
+                        </div>
                     </div>
-                    <form action="{{ url_for('deleted_task') }}" method="POST">
-                        <button type="submit" id="delete-button">Delete</button>
-                        <input type="number" name="id" value="{{ task.id }}" hidden>
-                    </form>
-                </div>
-                {% if task.description %}
-                    <div class="description">
-                        <p>{{ task.description }}</p>
-                    </div>
-                {% endif %}
-            </article>
-        {% endfor %}
+                    {% if task.description %}
+                        <div class="description">
+                            <p>{{ task.description }}</p>
+                        </div>
+                    {% endif %}
+                </article>
+            {% endfor %}
+        </section>
     {% else %}
-        <h3>There are no tasks</h3>
+        <section class="tasks-not-exist">
+            <h3>There are no tasks</h3>
+        </section>
     {% endif %}
-</section>
+</main>
 {% endblock %}

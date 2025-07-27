@@ -1,0 +1,14 @@
+footer {
+    padding: .5rem;
+    background-color: var(--color1);
+    text-align: center;
+}
+
+footer > p {
+    font: normal 1rem var(--font);
+    color: white;
+}
+
+footer a {
+    color: white;
+}

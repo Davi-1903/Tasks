@@ -2,8 +2,15 @@
 
 {% block title %}Page not found{% endblock %}
 
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/404.css') }}">
+{% endblock %}
+
 {% block content %}
-    <h2>404 - Page not found</h2>
-    <p>This page is not found by our system...</p>
-    <a href="{{ url_for('index') }}">Home</a>
+    <main>
+        <article>
+            <h2>404 - Page not found</h2>
+            <p>This page is not found by our system...</p>
+        </article>
+    </main>
 {% endblock %}
