@@ -1,6 +1,6 @@
 # Tasks
 
-Projetos simples com `Flask`.
+Projeto simples com `Flask`.
 
 ## 🌐 Como executar
 
@@ -19,10 +19,6 @@ Projetos simples com `Flask`.
 3. **Execute a aplicação**
 
     ```sh
-    # Linux/MacOS
-    python3 src/app.py
-
-    # Windows
     python src/app.py
     ```
 
