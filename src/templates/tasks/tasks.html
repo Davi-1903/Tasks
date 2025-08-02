@@ -15,7 +15,7 @@
             <p>{{ tasks_incomplet_length }} tasks incomplet</p>
         </div>
         <div class="task-content">
-            <a href="{{ url_for('create_task') }}">
+            <a href="{{ url_for('task.create_task') }}">
                 <button id="new-task">New task</button>
             </a>
         </div>
@@ -30,17 +30,17 @@
                         </div>
                         <div class="operations">
                             {% if task.completed %}
-                                <form action="{{ url_for('reopen_task') }}" method="POST">
+                                <form action="{{ url_for('task.reopen_task') }}" method="POST">
                                     <button type="submit" id="reopn-button">Reopen</button>
                                     <input type="number" name="id" value="{{ task.id }}" hidden>
                                 </form>
                             {% else %}
-                                <form action="{{ url_for('completed_task') }}" method="POST">
+                                <form action="{{ url_for('task.completed_task') }}" method="POST">
                                     <button type="submit" id="pending-button">Pending</button>
                                     <input type="number" name="id" value="{{ task.id }}" hidden>
                                 </form>
                             {% endif %}
-                            <form action="{{ url_for('deleted_task') }}" method="POST">
+                            <form action="{{ url_for('task.deleted_task') }}" method="POST">
                                 <button type="submit" id="delete-button">Delete</button>
                                 <input type="number" name="id" value="{{ task.id }}" hidden>
                             </form>

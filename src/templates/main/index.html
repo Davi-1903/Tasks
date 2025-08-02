@@ -14,7 +14,7 @@
                 <section class="tasks-exist">
                     {% for task in tasks %}
                         {% if not task.completed %}
-                            <a href="{{ url_for('tasks') }}">
+                            <a href="{{ url_for('task.tasks') }}">
                                 <article class="task">
                                     <h3>{{ task.title }}</h3>
                                     {% if task.description %}
@@ -34,7 +34,7 @@
             {% endif %}
             <section class="dangerous-zone">
                 <h3>Dangerous Zone!</h3>
-                <form action="{{ url_for('delete_account', user_id=current_user.id) }}" method="POST" onsubmit="return confirm('Are you sure?')">
+                <form action="{{ url_for('main.delete_account', user_id=current_user.id) }}" method="POST" onsubmit="return confirm('Are you sure?')">
                     <button type="submit">Delete account</button>
                 </form>
             </section>
