@@ -5,6 +5,10 @@ main {
     background-color: #eeefee;
 }
 
+article {
+    max-width: min(80%, 72rem);
+}
+
 article > h2 {
     font: bold 4rem var(--font);
     color: var(--color1);
