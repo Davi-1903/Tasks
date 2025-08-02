@@ -43,7 +43,7 @@ def completed_task():
 @login_required
 def deleted_task():
     if request.method == 'POST':
-        id = request.form['id']
+        id = int(request.form['id'])
         task = db.session.get(Task, id)
         db.session.delete(task)
         db.session.commit()
