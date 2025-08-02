@@ -8,7 +8,11 @@ header {
     box-shadow: .5rem 0 1rem #00800040;
 }
 
-header > h1 {
+header a {
+    text-decoration: none;
+}
+
+header h1 {
     font: bold 2.4rem var(--font);
     background-image: linear-gradient(to right bottom, var(--color1), var(--color2));
     background-clip: text;
@@ -24,7 +28,6 @@ header > nav .menu {
 
 header > nav .menu a {
     font: normal 1.2rem var(--font);
-    text-decoration: none;
     color: var(--color1);
 }
 

@@ -1,8 +1,9 @@
 <header>
-    <h1>Tasks</h1>
+    <a href="{{ url_for('main.index') }}">
+        <h1>Tasks</h1>
+    </a>
     <nav>
         <ul class="menu">
-            <li><a href="{{ url_for('main.index') }}">Home</a></li>
             {% if current_user.is_authenticated %}
                 <li><a href="{{ url_for('task.tasks') }}">Tasks</a></li>
                 <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
