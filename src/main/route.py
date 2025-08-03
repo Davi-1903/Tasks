@@ -8,9 +8,7 @@ main_bp = Blueprint('main', __name__, template_folder='templates')
 
 @main_bp.route('/')
 def index():
-    if current_user.is_authenticated:
-        return render_template('main/index.html', tasks=current_user.tasks)
-    return render_template('main/index.html', tasks=None)
+    return render_template('main/index.html', tasks=(current_user.is_authenticated and current_user.tasks))
 
 
 @main_bp.route('/delete_account/<int:user_id>', methods=['POST'])

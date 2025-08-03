@@ -6,7 +6,7 @@ import config
 
 
 app = Flask(__name__)
-config.config_app(app)
+config.config_app(app, __file__)
 app.register_blueprint(main_bp)
 app.register_blueprint(auth_bp)
 app.register_blueprint(task_bp)
