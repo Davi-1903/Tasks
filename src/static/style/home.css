@@ -92,8 +92,12 @@ main {
 
 .dangerous-zone button {
     padding: .5rem 1rem;
-    font: normal 1.2rem var(--font);
-    color: white;
     border-radius: .5rem;
     background-color: red;
+}
+
+.dangerous-zone button > a {
+    text-decoration: none;
+    font: normal 1.2rem var(--font);
+    color: white;
 }

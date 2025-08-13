@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Account{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/form.css') }}">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <form action="{{ url_for('main.delete_account') }}" method="POST" onsubmit="return confirm('Last confirmation...')">
+            <h2>Delete Account</h2>
+            <div class="input-label">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Your password" required>
+            </div>
+            {% include 'components/messages.html' %}
+            <button type="submit">Delete Account</button>
+        </form>
+    </main>
+{% endblock %}

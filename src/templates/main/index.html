@@ -34,9 +34,7 @@
             {% endif %}
             <section class="dangerous-zone">
                 <h3>Dangerous Zone!</h3>
-                <form action="{{ url_for('main.delete_account', user_id=current_user.id) }}" method="POST" onsubmit="return confirm('Are you sure?')">
-                    <button type="submit">Delete account</button>
-                </form>
+                <button><a href="{{ url_for('main.delete_account') }}">Delete account</a></button>
             </section>
         </main>
     {% else %}
