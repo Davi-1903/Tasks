@@ -1,3 +1,11 @@
+# Ambiente virtual
+env/
+.env/
+venv/
 .venv/
+
+# Arquivos binários
 __pycache__/
+
+# Banco de dados
 src/database/*.db
