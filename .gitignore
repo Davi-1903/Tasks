@@ -6,6 +6,7 @@ venv/
 
 # Arquivos binários
 __pycache__/
+*.pyc
 
 # Banco de dados
-src/database/*.db
+instance/*.db
